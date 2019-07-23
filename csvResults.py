@@ -14,8 +14,7 @@ from numpy.core.arrayprint import LongFloatFormat
 # from networkx.algorithms import centrality
 
 adjstartTime = time.time()
-# adjMatrix, nodelist  = BuildAdjacencyMatrix("/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/cascade-userroles/data1",',')
-adjMatrix, nodelist  = BuildAdjacencyMatrix("/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/combi_casc/sections/onehash")
+adjMatrix, nodelist  = BuildAdjacencyMatrix(".../onehash")
 
 print("adjMatrix created")
 adjTime = time.time() - adjstartTime
@@ -33,7 +32,6 @@ sizeOfConnectedComponents = collections.Counter(componentsLabelsArray.flatten())
 floydstartTime = time.time()
 floydtime = time.time()
 distMat, countMat, diameterDir = FloydWarshall(adjMatrix, None)
-# print(diameterDir)
 print("FloydWarshall done")
 floydTime = time.time() - floydstartTime
 
@@ -55,7 +53,6 @@ print(countOutDegree)
 print("OutDegree calculated")
 newoutDegree = numpy.array(countOutDegree)
 newoutDegree.astype(LongFloatFormat)
-#print(newoutDegree)
 coutTime = time.time() - coutstartTime
 
 #closenessCentrality
@@ -69,8 +66,6 @@ closecentralTime = time.time() - closecentralstartTime
 btncentralstartTime = time.time()
 # betweennessCentrality= sorted(metrics.CalculateBetweennessCentrality(distMat, countMat, None), reverse=True)
 print("betweennessCentrality calculated")
-# print(isinstance(betweennessCentrality[1], long))
-# print(type(betweennessCentrality[1]))
 btncentralTime = time.time() - btncentralstartTime
 
 #betweennessCentralityNormalized
@@ -94,19 +89,12 @@ rootInfluence = nodelist[rootIndex]
 print("rootInfluence calculated")
 rootInfluenceTime = time.time() - rootInfluencestartTime
 
-#distanceFromRoot
-#distanceFromRoot = metrics.GetDistanceFromRoot(nodelist.index("AnyInputUserId"), distMat, adjMatrix=adjMatrix)
-#print("distanceFromRoot calculated")
-
 #leafIndices
 leafIndicesstartTime = time.time()
 leafIndices = set(metrics.GetLeafIndices(adjMatrix))
 print("leafIndices calculated")
 leafIndicesTime = time.time() - leafIndicesstartTime
 
-#distanceFromLeaf
-#distanceFromLeaf = metrics.GetDistanceFromLeaf(nodes.index("AnyInputUserId"), distMat, adjMatrix)
-#print("distanceFromLeaf calculated")
 
 #allNodesDistancesFromRoot
 nodesDistancesstartTime = time.time()
@@ -136,7 +124,6 @@ bt_Time = time.time() - bt_startTime
 # Calculate new closeness centrality
 clo_centralitystartTime = time.time()
 clo_centrality = sorted(metrics.closeness(adjMatrix), reverse = True)
-# clo_centrality = metrics.closeness(adjMatrix)
 clo_centralityTime = time.time() - clo_centralitystartTime
 
 
@@ -148,12 +135,10 @@ density_Time = time.time() - density_startTime
 
 # Calculate Eccentricity
 eccentricity_startTime = time.time()
-# graphEccentricity = metrics.GetConnectedEccentricity(adjMatrix, False)
-# print(graphEccentricity)
+
 eccentricity_Time = time.time() - eccentricity_startTime
 
 clustering_coeff = metrics.GetClusteringCoefficent(adjMatrix)
-# print(clustering_coeff)
 
 
 
@@ -205,17 +190,3 @@ f2.write("Graph Density calculation time: "+str(density_Time)+" seconds"+'\r\n\r
 f2.write("NX Betweenness Centrality calculation time: "+str(bt_Time)+" seconds"+'\r\n\r\n')
 f2.close()
 print("Writing to time performance file completed")
-
-
-
-
-#printing the same metrics on the console
-#print("Count InDegree:",countInDegree)
-#print("Closeness Centrality:", closenessCentrality)
-#print("Betweenness Centrality:",betweennessCentrality)
-#print("Betweenness CentralityNormalized:",betweennessCentralityNormalized)
-#print("Root Node:",rootNode)
-#print("Root Influence:",rootInfluence)
-#print("Leaf Indices:",leafIndices)
-#print("All Nodes Distances From Root:",allNodesDistancesFromRoot)
-#print("All Nodes Distances To Leaf:",allNodesDistancesToLeaf)
