@@ -15,7 +15,7 @@ def det_follower_conn(userID, check_id):
     can return a list of followers of that user.
     '''
     
-    sg_directory = "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/socialgraph/new_data/social-graph-iswc/followerdata"
+    sg_directory = ".../social-graph-iswc/followerdata"
     prefix = "followers"
     val_ret = False
     check_id = str(check_id)
@@ -41,7 +41,7 @@ def det_friend_conn(userID, check_id):
     Can return a list of friends of that user.
     '''
     
-    sg_directory = "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/socialgraph/new_data/social-graph-iswc/frienddata"
+    sg_directory = ".../social-graph-iswc/frienddata"
     prefix = "friends"
     val_ret = False
     check_id = str(check_id)
@@ -65,7 +65,7 @@ def det_friend_conn(userID, check_id):
 
 # Main method to check code
 if __name__ == '__main__':
-    sg_directory = "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/socialgraph/new_data/social-graph-iswc/followerdata"
+    sg_directory = ".../social-graph-iswc/followerdata"
     filelist = []
     prefix = "followers"
     userID = 2310416978

@@ -2,6 +2,8 @@
 Created on 21 Nov 2018
 
 @author: benjaminsenyonyi
+
+All routes to directories have been altered and can be altered for use.
 '''
 from hash_dictionary import sel_double_htags, select_hashtag_dict, \
     select_final_dict, select_time_dict, select_userid_dict
@@ -99,14 +101,13 @@ def csv_hash_cascade(json_folder):
                       if key_ID in final_dictionary],
                     key=lambda x: x[1])
            for textval in dd}
-    f0 = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/no_conn_cascade.csv','w')
-    f1 = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/social_conn_cascade.csv','w')
+    f0 = open('.../no_conn_cascade.csv','w') #files to open when writing to the csv files
+    f1 = open('.../social_conn_cascade.csv','w') #file without social connections
 
     for textval, entries in output_dict.items():
         list_for_output = entries if len(entries) == 1 else entries[1:]
 
         for item in list_for_output:
-#             print(item)
             bin1 = extract_userid(entries[0][0], userid_dictionary)
             bin2 = extract_userid(item[0], userid_dictionary)
             soc_val = determine_social_value(bin1, bin2)
@@ -156,7 +157,7 @@ def csv_hashntime_cascade(json_folder):
                       if key_ID in final_dictionary],
                     key=lambda x: x[1])
            for textval in dd}
-    f = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/full_cascade.csv','w')
+    f = open('.../full_cascade.csv','w')
     
 #     userid_dict ={}
     
@@ -233,7 +234,7 @@ def casc_creator(json_folder):
             print(columns)
             count+=1
 #         Direction to cascade folder 
-        df.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/cascadelist/' + \
+        df.to_csv('.../cascadelist/' + \
                    'casc__' + '_'.join(key) + '.csv', index=False)
     print(count)   
         

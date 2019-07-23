@@ -78,9 +78,7 @@ def density_RetweetCasc(folderWithCsvs):
             dense = nx.density(graph)
             density_values.append(dense)
             
-    
-#         matrix = csr_matrix((val, (row, col)), (noOfNodes, noOfNodes))
-#     print(density_values)
+ 
     return density_values
 
 
@@ -88,10 +86,8 @@ def casc_lifetime(time_dict):
     '''
     Returns the lifetime of the cascade from the time dictionary
     '''
-#     print(time_dict.values())
     largest_time = max(time_dict.items(), key=lambda k: k[1])
     lowest_time = min(time_dict.items(), key=lambda k: k[1])
-#     print(1445874371000 -1444311985000) (658670968768958464, 1445874371000)
     lifetime = (largest_time[1] - lowest_time[1])
     return lifetime
 
@@ -108,17 +104,13 @@ def Retweet_Reciprocity(fileName):
         for row in reader:
             child_ids.append(( row[3], row[1] ))
             root_ids.append(( int(row[1]) , int(row[3]) ))      
-#             new_val=root_ids.count((row[1], row[3]))
-#             print(new_val)
 
-#     print(root_ids)
+
     this_count = Counter(root_ids)
-#     root_id_count = root_ids.count((2310416978, 2606773789))
-#     second_count = root_ids.count((2606773789, 2310416978 ))
-    
+
+
     recip_array = []
     for k,v in root_ids:
-#         print(k,v)
         
         root_id_count = root_ids.count((k,v))
         second_count = root_ids.count((v,k))
@@ -130,8 +122,6 @@ def Retweet_Reciprocity(fileName):
         
     print(sorted(recip_array, reverse = True))
          
-#     print(root_id_count)
-#     print(second_count)
     print(this_count)
 
 
@@ -162,7 +152,6 @@ def Spread_Score(fileName):
                 user_ids.append(row[1])
             if row[3] not in user_ids:
                 user_ids.append(row[3])
-#     print(user_ids)
 #     Count retweeted (target) users method
     for user in user_ids:
         rt_count = target_ids.count(user)
@@ -174,26 +163,12 @@ def Spread_Score(fileName):
         source_dict[user] = twt_count
     
     spread_dict = {}
-#     for k,v in source_dict.items():
-#         for key, value in target_dict.items():
-#             if k == key:
-#                 if v == 0:
-#                     spread_sco = -1
-#                 else:
-#                     spread_sco = value / v
-#                 spread_dict[k] = spread_sco
     
     for k,v in source_dict.items():
         for key, value in target_dict.items():
             if k == key:
-#                 if v == 0:
-#                     spread_sco = 0
-#                 else:
                 spread_sco = v / (value+v)
                 spread_dict[k] = spread_sco
-
-#     print(target_dict) 
-#     print(source_dict)
     print(spread_dict)          
     
     return spread_dict.values()
@@ -210,7 +185,6 @@ def fractionRootNodes(fileName, value):
         for row in reader:
 #             add all retweeted values to target_ids
             all_ids.append(row[2]) 
-#     num_nodes = all_ids.count[value]
     count_nodes = Counter(all_ids)
     print(sum(count_nodes.values()))
     
@@ -235,48 +209,13 @@ def averageRetweet_Time(fileName):
     --------
     '''
     time_diff =[]
-#     time_diffs = []
     
     with open(fileName) as inputfile:
         reader = csv.reader(inputfile, delimiter = ',')
         for row in reader:
             row_diff = int(row[4]) - int(row[3])
-#             time_diff.append([row[3], row[4]])
             time_diff.append(row_diff) 
     return time_diff 
-
-
-def unused():
-    #     for each_pair in root_ids:
-#         pair_count = 0
-#         print(each_pair)
-#         pair_count +=1
-# #         pair_dict[each_pair] = pair_count
-#       
-#     print(pair_dict)
-    
-    
-#     for r_val in root_ids:
-#         r_count = 0
-#         c_count = 0
-#         for c_val in child_ids:
-#             if r_val == c_val:
-#                 r_count+=1
-#                 c_count +=1
-#         print(str(r_count+c_count) +" : "+ str(c_count))
-
-#     for k,v in child_ids:
-#         for first, second in root_ids:
-#             print(first,second)
-#             if k==second and v== first:
-#                 print(k,v)
-
-#     for key, value in sorted(root_id_count.items(), key=lambda(k,v): (v,k)):
-#         print ("%s: %s" % (key, value))    
-    pass
-
-
-
 
 
 

@@ -15,15 +15,6 @@ def get_text_tree(data):
     tree = objectpath.Tree(data)
     return tuple(tree.execute('$.entities.hashtags.text'))
 
-# def load_data(file_name):
-#     names = []
-#     with open(file_name) as file_to_read:
-#         for line in file_to_read:
-#             data = json.loads(line)
-#             names.extend(get_text_tree(data))
-# 
-#     return names
-        
 def select_hashtag_data(json_folder):
     names = []
     filelist = []
@@ -40,7 +31,7 @@ def select_hashtag_data(json_folder):
 
     return names       
 
-# Old method used.
+# Old method (no longer in use).
 def select_hashtags(fileName):
     data = []
     names = []
@@ -54,7 +45,7 @@ def select_hashtags(fileName):
         print("Hashtag data loaded successfully")
     return hashtag_tuple
 
-# Working okay
+# Working well
 def select_message_id(fileName):
     data = []
     with open(fileName, 'r') as file_to_read:
@@ -75,17 +66,3 @@ def select_time_text(fileName):
             dict[json_tree.execute('$.id')] = json_tree.execute('$.created_at')
     print("Tweets loaded successfully")
     return dict
-
-# def select_tweet_text(fileName):
-#     data = []
-#     dict={}
-#     with open(fileName, 'r') as file_to_read:
-#         content = file_to_read.read().splitlines()
-#         for line in content:
-# #             print line
-#             json_tree = objectpath.Tree(json.loads(line))
-#             dict[json_tree.execute('$.id')] = list(json_tree.execute('$.entities.hashtags.text'))
-# #             line.next()
-#     print("Tweets loaded successfully")
-#     return dict
-#     

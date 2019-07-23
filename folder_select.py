@@ -2,6 +2,8 @@
 Created on 27 Sep 2018
 
 @author: benjaminsenyonyi
+
+methods require file paths to JSON files
 '''
 import json
 import objectpath

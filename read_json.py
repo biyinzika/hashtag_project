@@ -18,13 +18,12 @@ from functionals import count_dict_values, unique_list_output, value_counter, \
 from hash_stats import create_similarity_list, counted_sims
 
 # Begin main method
+#Note that file paths need to be input
 if __name__ == '__main__':
-#     json_folder = \
-#     "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/jsonfolder/"
     fileName = \
-    "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/tester.json"
+    ".../tester.json"
     json_folder = \
-    "/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/socialgraph/new_data/iswc2015/split-cascades"
+    ".../iswc2015/split-cascades"
 
     
 #     List of methods that creates dictionaries with message ID and hashtags
@@ -41,23 +40,21 @@ if __name__ == '__main__':
 
     
 #     Writing ID CSV
-    with open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/UserID_results.csv', 'w') as f:
+    with open('.../UserID_results.csv', 'w') as f:
         w = csv.writer(f, delimiter =';')
         w.writerows(sorted(userid_dict.items()))
         print('Print UserID completed')
     
 # #     Writing two or more hashtag dictionary
-    with open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/Two_or_more_hts_results.csv', 'w') as f:
+    with open('.../Two_or_more_hts_results.csv', 'w') as f:
         w = csv.writer(f, delimiter =';')
         w.writerows(dou_more_hashtags.items())
         print('Print IDs with two or more hashtags completed')
       
 #     Writing Hashtag CSV alone
-    with open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/Hashtag_results.csv', 'w') as f:
+    with open('.../Hashtag_results.csv', 'w') as f:
         w = csv.writer(f, delimiter =';')
-#         for item in create_hashdict.values():
-#             if item ('[]'):
-#                 item.remove()
+
         w.writerows(sorted(create_hashdict.items()))
         print('Hashtag table completed')
     
@@ -67,23 +64,9 @@ if __name__ == '__main__':
     data_file.columns = ['message_id', 'Hashtags', 'Time', 'user_id']
     data_file.groupby('Hashtags')
     data_file.set_index('message_id', inplace = True)
-    data_file.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/final_dict_file.csv')
-#     diff_file = data_file.diff(axis=1)
-#     diff_file.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/diff_file.csv')
+    data_file.to_csv('.../final_dict_file.csv')
     print('Pandas final dictionary file completed')
    
-
-
-# #     Writing to file
-#     f = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/Results.txt','w')
-#     f.write('Unique List :\r\n'+str(create_unique_list) + '\r\n\r\n')
-#     f.write('Hashtag Dictionary :  \r\n'+str(create_hashdict) + '\r\n\r\n')
-# #     f.write('Final Dictionary :  \r\n'+str(final_dict) + '\r\n\r\n')
-#     f.write('Counted Hashtag Values :  \r\n'+str(counted_values) + '\r\n\r\n')  
-# #     f.write('Similarity values:  \r\n'+str(sim_result) + '\r\n\r\n')  
-#     f.close()
-#     print('File Printing Completed')
-
     
 #     Draw graph to show hashtag occurences
     graphlist = []

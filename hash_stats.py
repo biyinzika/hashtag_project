@@ -14,11 +14,6 @@ def create_similarity_list(dict):
             if np.array(value) == np.array(c_value):
                 new_dict[key] = value, c_value, c_key
 
-#             for item in value:
-#                 for ot_item in c_value:
-#                     if item == ot_item:
-#                         new_dict[key] = item, ot_item, c_key
-#                 print('uis')
                 
         
     return new_dict
@@ -29,14 +24,10 @@ def counted_sims(data_dict):
     '''
     new_data = {}
     for key in data_dict.keys():
-#         print(key)
-#         print('###########################')
         new_data[key] = {}
         x = []
         y = []
         for k, v in data_dict.items():
-#             print(v)
-#             print('**************************************')
             if key == k: 
                 pass
             else:

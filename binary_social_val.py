@@ -51,6 +51,8 @@ def determine_social_value(userID, check_id):
     else:
         fol_val= det_follower_conn(userID, check_id)
         friend_val=det_friend_conn(userID, check_id)
+#         print("Follower value : " + str(fol_val))
+    #     print("friend value : " + str(friend_val))
         if fol_val or friend_val == 1:
             bin_value = 1
         else:

@@ -43,7 +43,6 @@ def select_final_dict(json_folder):
                     for item in newhash_list:
                         if 'iswc2015' in newhash_list:
                             newhash_list.remove('iswc2015')
-#                 final_list.append(json_tree.execute('$.id'), newhash_list,json_tree.execute('$.created_at'),json_tree.execute('$.user.id'))
                 f_dict[json_tree.execute('$.id')] = \
                     ( newhash_list, \
                       json_tree.execute('$.created_at'), \
@@ -75,16 +74,8 @@ def select_hashtag_dict(json_folder):
                     newhash_list.append(str(word).lower())
                     for item in newhash_list:
                         if 'iswc2015' in newhash_list:
-                            newhash_list.remove('iswc2015')
-#                         if [] in newhash_list:
-#                             newhash_list.remove()
-#                 print newhash_list         
+                            newhash_list.remove('iswc2015')     
                 dict[json_tree.execute('$.id')] = newhash_list
-#                 dict[json_tree.execute('$.id')] = list(json_tree.execute('$.entities.hashtags.text'))
-                
-#                 Not working because list has no attribute lower()
-#                 for key, value in dict.iteritems():
-#                     dict[key] = value.lower()
     print("Hashtag Dictionary loaded")
     return dict
 
@@ -123,8 +114,7 @@ def select_double_hashtag_dict(json_folder):
                 for or_key,or_val in dict.items():
                     if or_val == spec_value:
                         dict_inverse[or_key] = or_val
-#                     for item in or_val:
-#                         dict_inverse[item] = or_key
+
     print (new_val_list)
     return dict_inverse
 
@@ -144,9 +134,6 @@ def sel_double_htags(hash_dict):
                 for or_key, or_val in hash_dict.items():
                     if or_val == spec_value:
                         dict_double[or_key] = or_val
-#                     for item in or_val:
-#                         dict_inverse[item] = or_key
-#     print (new_val_list)
     print("Double & more hashtag dictionary loaded")
     return dict_double
 
@@ -173,9 +160,7 @@ def select_hashtag_2(json_folder):
                     newhash_list.append(str(word).lower())
                 dict[json_tree.execute('$.id')] = newhash_list
                 
-#                 Not working because list has no attribute lower()
-#                 for key, value in dict.iteritems():
-#                     dict[key] = value.lower()
+
     print("Hashtag Dictionary loaded")
     return dict
 
@@ -195,9 +180,6 @@ def select_text_dict(json_folder):
                 data = json.loads(line)
                 json_tree = objectpath.Tree(data)
                 json.dumps(data, ensure_ascii=True, indent=4)
-#                 textlist = str()
-# #                 for words in textlist:
-# #                     str(words)
                 dict[json_tree.execute('$.id')] = json_tree.execute('$.text')
     print("Texts loaded successfully")
     return dict
@@ -217,7 +199,6 @@ def select_time_dict(json_folder):
             for line in file_to_read:
                 data = json.loads(line)
                 json_tree = objectpath.Tree(data)
-#                 json.dumps(data, ensure_ascii=True, indent=4)
                 dict[json_tree.execute('$.id')] = json_tree.execute('$.created_at')
     print("Time dictionary loaded")
     return dict
@@ -236,7 +217,6 @@ def select_userid_dict(json_folder):
             for line in file_to_read:
                 data = json.loads(line)
                 json_tree = objectpath.Tree(data)
-#                 json.dumps(data, ensure_ascii=True, indent=4)
                 dict[json_tree.execute('$.id')] = json_tree.execute('$.user.id')
     print("UserID dictionary loaded")
     return dict

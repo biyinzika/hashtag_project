@@ -41,7 +41,6 @@ def hash_sim(dictionary_name):
     dict_copy = dd.copy()
     for k in dict_copy.keys():
         for keys in dd.keys():
-#             key_list.append(set(k and keys)) # Too heavy on the computer. Not optimal.
             key_list.append(k)
     
     return key_list
@@ -99,16 +98,7 @@ def count_dict_values(dict):
     for d in value_list:
         if tuple(d) not in result:
             result[tuple(d)] = value_list.count(d)
-
-#     print result
-
-# # Original
-#     for x in value_list:
-#         print (x, value_list.count(x))
-#         
-#     return end   
-## Second Option using collections.Counter
-#     result = Counter(tuple(x) for x in value_list)   
+   
     return result
 
   
@@ -138,9 +128,7 @@ def unique_list_output(dict):
     """
     unique_list = [] 
     value_list = list(dict.values())
-#     traverse over all elements 
-#     for x in value_list:
-#         print (x, value_list.count(x))
+
     for x in value_list: 
         if x not in unique_list: 
             unique_list.append(x)
@@ -192,7 +180,6 @@ def count_ht_apps(dict):
                 count_9_array +=1
             if len(spec_value) ==10:
                 count_10_array +=1
-#             print (spec_value, value_list.count(spec_value))
-#     Return order (0 hashtags, 1 hashtag, 2 hashtags, 3 hashtags, 4 hashtags)
+
     return count_0_array, count_1_array, count_2_array, count_3_array, count_4_array, count_5_array, \
          count_6_array, count_7_array, count_8_array, count_9_array, count_10_array
