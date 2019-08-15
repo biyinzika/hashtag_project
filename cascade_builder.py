@@ -25,15 +25,12 @@ def combi_cascade(json_folder):
     doubles_dictionary = sel_double_htags(hashtag_dictionary)
     time_dictionary = select_time_dict(json_folder)
     userid_dictionary = select_userid_dict(json_folder)
-    
-#     intersections = []
-#     f0 = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/combi_casc/onehash.csv','w')
- 
+
      
 #     for first, second in combinations(hashtag_dictionary.items(), r=2):
 #     Files to be written
 
-    f0 = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/combi_casc/intersections.csv','w')
+    f0 = open('.../combi_casc/intersections.csv','w')
 #  
 #      
     for first, second in combinations(doubles_dictionary.items(), r=2):
@@ -239,7 +236,7 @@ def casc_creator(json_folder):
     print(count)   
         
 # #     Writing two or more hashtag dictionary
-    with open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/Two_or_more_hts_results.csv', 'w') as f:
+    with open('.../Two_or_more_hts_results.csv', 'w') as f:
         w = csv.writer(f, delimiter =';')
         w.writerows(doubles_dictionary.items())
         print('Print IDs with two or more hashtags completed')            
@@ -258,13 +255,13 @@ def casc_creator(json_folder):
     data_file.columns = ['message_id' , 'Hashtags', 'Time', 'user_id']
     data_file.groupby('Hashtags')
     data_file.set_index('message_id', inplace = True)
-    data_file.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/casc_dict_file.csv')
+    data_file.to_csv('.../casc_dict_file.csv')
 #     diff_file = data_file.diff(axis=1)
 #     diff_file.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/diff_file.csv')
     print('Pandas cascade dictionary file completed')   
     
 #     Writing default dictionary to file
-    f = open('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/cascades/DefaultDictionary.txt','w')
+    f = open('.../DefaultDictionary.txt','w')
     f.write('Unique List :\r\n'+str(dd) + '\r\n\r\n') 
     f.close()
     print('File Printing Completed')
