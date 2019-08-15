@@ -257,7 +257,7 @@ def casc_creator(json_folder):
     data_file.set_index('message_id', inplace = True)
     data_file.to_csv('.../casc_dict_file.csv')
 #     diff_file = data_file.diff(axis=1)
-#     diff_file.to_csv('/Users/benjaminsenyonyi/Documents/Masters course/Sem 4/new_workspace/hashtag-project/csv_folder/diff_file.csv')
+#     diff_file.to_csv('.../diff_file.csv')
     print('Pandas cascade dictionary file completed')   
     
 #     Writing default dictionary to file
